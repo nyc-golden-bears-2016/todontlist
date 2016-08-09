@@ -1,21 +1,28 @@
 <div class="text-container">
 
-  <h1>Your To Don't Lists</h1>
-  <% @user.lists.each do | list | %>
-    <%= list.title %>
+  <h1><%= @list.title%></h1>
+  <ul>
+  <% @list.list_items.each do | item | %>
+    <li>
+      <%= form_for item, url: "#{@list.id}/list_items/#{item.id}", method: "delete" do |f| %>
+      <%= item.body%>
+      <%= f.submit "X"%>
+    </li>
   <% end %>
+<% end %>
+</ul>
 </div>
 
 <div class="text-container">
 
- <%= form_for :list, url: lists_path do |f| %>
+ <%= form_for :list_items, url: list_list_items_path(@list) do |f| %>
 
       <div class="field">
-        <%= f.label :list_title %>
+        <%= f.label :list_item %>
         <br>
-        <%= f.text_field :title, placeholder: "New lists title" %>
+        <%= f.text_field :body, placeholder: "To Don't Item" %>
       </div>
-      <%= f.submit "Create New List" %>
+      <%= f.submit "Create New To Don't List Item" %>
 
     <% end %>
 </div>

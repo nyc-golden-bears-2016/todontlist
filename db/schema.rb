@@ -13,12 +13,11 @@
 ActiveRecord::Schema.define(version: 20160809141642) do
 
   create_table "list_items", force: :cascade do |t|
-    t.string   "title"
     t.text     "body"
-    t.boolean  "complete"
+    t.boolean  "complete",   default: false
     t.integer  "list_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.index ["list_id"], name: "index_list_items_on_list_id"
   end
 

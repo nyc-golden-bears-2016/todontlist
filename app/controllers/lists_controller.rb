@@ -2,7 +2,7 @@ class ListsController < ApplicationController
 
   def index
     @user = current_user
-    render :show
+    render :index
   end
 
   def create
@@ -17,10 +17,17 @@ class ListsController < ApplicationController
     end
   end
 
+  def show
+    @list = List.find(params[:id])
+  end
+
 
   def list_params
     params[:list].permit(:title)
   end
 
+  def update
+    binding.pry
+  end
 
 end
