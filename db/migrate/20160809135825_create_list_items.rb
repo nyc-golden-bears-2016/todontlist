@@ -4,6 +4,7 @@ class CreateListItems < ActiveRecord::Migration[5.0]
       t.string :title
       t.text :body
       t.boolean :complete
+      t.references :list
 
       t.timestamps
     end

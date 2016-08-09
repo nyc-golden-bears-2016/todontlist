@@ -15,8 +15,8 @@ class UsersController < ApplicationController
       flash[:notice] = "Welcome to the To Don't List"
       redirect_to root_path
     else
-      flash[:notice] = "INCORRECT!!!!"
-      render :new
+      flash[:notice] = @user.errors.full_messages
+      redirect_to root_path
     end
   end
 
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
  private
 
   def user_params
-    params.require(:user).permit(:username, :password)
+    params[:user].permit(:username, :password)
   end
 
 end

@@ -9,6 +9,9 @@
   </head>
 
   <body>
+    <% if session[:user_id] %>
+      <nav><%= button_to "Don't Push This Button", logout_path %></nav>
+    <% end %>
     <%= yield %>
   </body>
 </html>

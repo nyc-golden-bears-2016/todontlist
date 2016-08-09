@@ -4,11 +4,11 @@ class WelcomeController < ApplicationController
   end
 
   def login
-      user = User.find_by(username: params[:user][:username])
-    if user
+    user = User.find_by(username: params[:user][:username])
+    if user && user.authenticate(params[:user][:password])
       flash[:notice] = "Logged In"
       session[:user_id] = user.id
-      redirect_to root_url
+      redirect_to lists_path
     else
       flash[:notice] = "User Name And Password Did Not Match"
       redirect_to root_url
@@ -16,6 +16,8 @@ class WelcomeController < ApplicationController
   end
 
   def logout
+    session.clear
+    redirect_to root_url, notice: "You chose unwisely"
   end
 
 end
