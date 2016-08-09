@@ -1,0 +1,47 @@
+
+  <% if flash[:notice] %>
+    <div class="text-container">
+      <p class="flash-notice"><%= flash[:notice] %></p>
+    </div>
+  <% end %>
+
+<div class="text-container">
+  <h1>To Don't List</h1>
+  <h2>A helpful way to keep track of what not to do</h2>
+
+  <h3>Returning user sign in here!</h3>
+    <%= form_for :user, url: login_path do |f| %>
+
+      <div class="field">
+        <%= f.label :username %>
+        <%= f.text_field :username %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+      </div>
+      <%= f.submit "Submit" %>
+
+    <% end %>
+  <h3>or</h3>
+
+  <h3>Sign up for lists of shit not to do</h3>
+    <div id="register-form">
+      <%= form_for :user, url: users_path do |f| %>
+
+        <div class="field">
+          <%= f.label :username %>
+          <%= f.text_field :username %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password %>
+          <%= f.password_field :password %>
+        </div>
+        <%= f.submit "Submit" %>
+
+      <% end %>
+    </div>
+
+</div>
